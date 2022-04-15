@@ -13,9 +13,46 @@ export const HomeStyled = styled.article`
     // align-items: center;
     height: 923px;
 
+    a {
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+      letter-spacing: 0.04em;
+      text-decoration-line: underline;
+      // text-decoration: none;
+      margin: 0 10px;
+      display: inline;
+      opacity: 0.7;
+      transition: opacity 0.3s ease;
+      -webkit-transition: opacity 0.3s ease;
+      -moz-transition: opacity 0.3s ease;
+      -ms-transition: opacity 0.3s ease;
+      -o-transition: opacity 0.3s ease;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+
     &_img {
+      position: relative;
       width: 50%;
-      height: 100%;
+      height: 923px;
+      overflow: hidden;
+      z-index: 10;
+
+      .tinyImg {
+        z-index: 100;
+        position: absolute;
+        top: 40px;
+        left: 50px;
+        width: 100px;
+        height: 150px;
+      }
+      .second {
+        top: 180px;
+      }
     }
 
     &_content {
@@ -48,7 +85,7 @@ export const HomeStyled = styled.article`
           display: flex;
           align-items: center;
           line-height: 10px;
-          margin: 20px 0px;
+          margin: 30px 0px;
 
           p {
             font-style: normal;
@@ -59,6 +96,24 @@ export const HomeStyled = styled.article`
             margin-right: 5px;
             letter-spacing: 0.04em;
           }
+        }
+      }
+
+      hr {
+        width: 100%;
+        // border: 0.5px solid #c4c4c4;
+        max-height: 0.5px;
+        background: red;
+        margin: 20px 0;
+      }
+
+      &_footer {
+        margin: 10px;
+
+        div {
+          display: flex;
+          align-items: center;
+          font-size: 18px;
         }
       }
     }
@@ -74,6 +129,7 @@ export const HomeStyled = styled.article`
             font-size: 24px;
             line-height: 24px;
             margin: 0px 10px;
+            margin-top: 15px;
           }
 
           p {
@@ -97,6 +153,108 @@ export const HomeStyled = styled.article`
             font-size: 12px;
             line-height: 16px;
             margin: 10px 10px 10px 10px;
+          }
+        }
+      }
+
+      &_content {
+        display: flex;
+        flex-direction: column;
+
+        select {
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 20px;
+          border-radius: 0;
+          background: none;
+          border: 1px solid ${colors.secondary};
+          padding: 10px;
+          margin: 10px;
+          margin-top: 20px;
+          width: 300px;
+        }
+
+        &_buttons {
+          display: flex;
+          // align-items: center;
+          // background: red;
+
+          .addToCart {
+            padding: 12px 28px;
+            background: ${colors.secondary};
+            color: ${colors.primary};
+            border: none;
+            outline: none;
+            margin: 10px;
+            cursor: pointer;
+            transition: box-shadow 0.3s ease;
+            -webkit-transition: box-shadow 0.3s ease;
+            -moz-transition: box-shadow 0.3s ease;
+            -ms-transition: box-shadow 0.3s ease;
+            -o-transition: box-shadow 0.3s ease;
+
+            &:hover {
+              box-shadow: 0px 10px 10px ${colors.secondary};
+            }
+          }
+
+          .save {
+            width: 44px;
+            height: 44px;
+            margin: 10px 4px;
+            border-radius: 0;
+            font-size: 24px;
+            border: none;
+            outline: none;
+            background: ${colors.secondary};
+            color: ${colors.primary};
+            cursor: pointer;
+            transition: box-shadow 0.3s ease;
+            -webkit-transition: box-shadow 0.3s ease;
+            -moz-transition: box-shadow 0.3s ease;
+            -ms-transition: box-shadow 0.3s ease;
+            -o-transition: box-shadow 0.3s ease;
+
+            &:hover {
+              box-shadow: 0px 10px 10px ${colors.secondary};
+            }
+          }
+
+          .counter {
+            display: flex;
+            width: 145px;
+            height: 44px;
+            background: #f2f2f2;
+            margin: 10px;
+
+            p {
+              width: 100%;
+              text-align: center;
+              line-height: 44px;
+              font-weight: 400;
+              font-size: 14px;
+            }
+
+            button {
+              width: 100%;
+              font-weight: 400;
+              font-size: 14px;
+              line-height: 20px;
+              background: none;
+              border: none;
+              outline: none;
+              cursor: pointer;
+              transition: background 0.3s ease;
+              -webkit-transition: background 0.3s ease;
+              -moz-transition: background 0.3s ease;
+              -ms-transition: background 0.3s ease;
+              -o-transition: background 0.3s ease;
+
+              &:hover {
+                background: ${colors.secondary};
+                color: ${colors.primary};
+              }
+            }
           }
         }
       }
