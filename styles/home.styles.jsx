@@ -6,34 +6,34 @@ export const HomeStyled = styled.article`
   margin: 0 auto;
   //   background: #333;
 
+  a {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.04em;
+    text-decoration-line: underline;
+    // text-decoration: none;
+    margin: 0 10px;
+    display: inline;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+    -webkit-transition: opacity 0.3s ease;
+    -moz-transition: opacity 0.3s ease;
+    -ms-transition: opacity 0.3s ease;
+    -o-transition: opacity 0.3s ease;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
   .home_up {
     // width: 100%;
     display: flex;
     padding-top: 20px;
     // align-items: center;
     height: 923px;
-
-    a {
-      font-style: normal;
-      font-weight: 400;
-      font-size: 14px;
-      line-height: 20px;
-      letter-spacing: 0.04em;
-      text-decoration-line: underline;
-      // text-decoration: none;
-      margin: 0 10px;
-      display: inline;
-      opacity: 0.7;
-      transition: opacity 0.3s ease;
-      -webkit-transition: opacity 0.3s ease;
-      -moz-transition: opacity 0.3s ease;
-      -ms-transition: opacity 0.3s ease;
-      -o-transition: opacity 0.3s ease;
-
-      &:hover {
-        opacity: 1;
-      }
-    }
 
     &_img {
       position: relative;
@@ -42,16 +42,20 @@ export const HomeStyled = styled.article`
       overflow: hidden;
       z-index: 10;
 
-      .tinyImg {
-        z-index: 100;
+      .images {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         position: absolute;
         top: 40px;
         left: 50px;
-        width: 100px;
-        height: 150px;
-      }
-      .second {
-        top: 180px;
+
+        img {
+          margin: 10px;
+          width: 70px;
+          cursor: pointer;
+          box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.5);
+        }
       }
     }
 
@@ -258,6 +262,46 @@ export const HomeStyled = styled.article`
           }
         }
       }
+    }
+  }
+`;
+
+export const HomeDownContent = styled.div`
+  display: flex;
+  align-items: center;
+  width: 100%;
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+  }
+
+  .main_img {
+    width: 50%;
+    margin-right: 10px;
+
+    @media screen and (max-width: 768px) {
+      width: 100%;
+      margin-bottom: 10px;
+      margin-right: 0;
+    }
+  }
+
+  .home_down_images {
+    width: 50%;
+    // height: 300px;
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 10px;
+
+    @media screen and (max-width: 768px) {
+      width: 100%;
+    }
+
+    img {
+      width: 100%;
+      // height: 100px;
     }
   }
 `;

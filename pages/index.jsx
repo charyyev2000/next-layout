@@ -2,11 +2,11 @@ import Head from "next/head";
 import Link from "next/link";
 import {
   NavbarContent,
-  NavbarStyled,
+  NavbarStyled
 } from "../components/Navbar/Navbar.styles";
 import Navbar from "../components/Navbar/Navbar";
 import Layout from "../components/Layout/Layout";
-import { HomeStyled } from "../styles/home.styles";
+import { HomeDownContent, HomeStyled } from "../styles/home.styles";
 import { icons } from "../styles/globalStyles";
 import Image from "next/image";
 import { useState } from "react";
@@ -21,42 +21,19 @@ export default function Home() {
           <div className="home_up_img">
             {/* make parent div position relative */}
             <Image
-              src={`/${bgPic}.png`}
+              src={`/homeUpImg/${bgPic}.png`}
               alt="first"
               layout="fill"
               objectFit="contain"
             />
 
-            <img
-              src="/1.png"
-              alt=""
-              className="tinyImg"
-              onClick={() => setBgPic(3)}
-            />
-            <img
-              src="/2.png"
-              alt=""
-              className="tinyImg second"
-              onClick={() => setBgPic(3)}
-            />
-            <img
-              src="/3.png"
-              alt=""
-              className="tinyImg third"
-              onClick={() => setBgPic(3)}
-            />
-            <img
-              src="/4.png"
-              alt=""
-              className="tinyImg fourth"
-              onClick={() => setBgPic(3)}
-            />
-            <img
-              src="/5.png"
-              alt=""
-              className="tinyImg fifth"
-              onClick={() => setBgPic(3)}
-            />
+            <div className="images">
+              <img src="/homeUpImg/1.png" alt="" onClick={() => setBgPic(1)} />
+              <img src="/homeUpImg/2.png" alt="" onClick={() => setBgPic(2)} />
+              <img src="/homeUpImg/3.png" alt="" onClick={() => setBgPic(3)} />
+              <img src="/homeUpImg/4.png" alt="" onClick={() => setBgPic(4)} />
+              <img src="/homeUpImg/5.png" alt="" onClick={() => setBgPic(5)} />
+            </div>
           </div>
 
           <div className="home_up_content">
@@ -139,6 +116,27 @@ export default function Home() {
             </footer>
           </div>
         </div>
+
+        <a
+          href="#"
+          style={{
+            display: "block",
+            width: "fit-content",
+            margin: "30px auto"
+          }}
+        >
+          Посмотрети все стили
+        </a>
+
+        <HomeDownContent>
+          <img src="/homeDownImg/content.png" alt="" className="main_img" />
+          <div className="home_down_images">
+            <img src="/homeDownImg/content2.png" alt="" />
+            <img src="/homeDownImg/content3.png" alt="" />
+            <img src="homeDownImg/content4.png" alt="" />
+            <img src="/homeDownImg/content5.png" alt="" />
+          </div>
+        </HomeDownContent>
       </HomeStyled>
     </Layout>
   );
