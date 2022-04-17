@@ -10,9 +10,10 @@ import { HomeDownContent, HomeStyled } from "../styles/home.styles";
 import { icons } from "../styles/globalStyles";
 import Image from "next/image";
 import { useState } from "react";
+import Footer from "../components/Footer/Footer";
 
 export default function Home() {
-  const [bgPic, setBgPic] = useState(2);
+  const [bgPic, setBgPic] = useState(1);
 
   return (
     <Layout>
@@ -20,11 +21,12 @@ export default function Home() {
         <div className="home_up">
           <div className="home_up_img">
             {/* make parent div position relative */}
-            <Image
+            <img
               src={`/homeUpImg/${bgPic}.png`}
               alt="first"
-              layout="fill"
-              objectFit="contain"
+              className="main_img"
+              // layout="fill"
+              // objectFit="contain"
             />
 
             <div className="images">
@@ -137,6 +139,8 @@ export default function Home() {
             <img src="/homeDownImg/content5.png" alt="" />
           </div>
         </HomeDownContent>
+
+        {/* <Footer></Footer> */}
       </HomeStyled>
     </Layout>
   );
