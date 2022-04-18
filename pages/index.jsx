@@ -2,22 +2,70 @@ import Head from "next/head";
 import Link from "next/link";
 import {
   NavbarContent,
-  NavbarStyled
+  NavbarStyled,
 } from "../components/Navbar/Navbar.styles";
 import Navbar from "../components/Navbar/Navbar";
 import Layout from "../components/Layout/Layout";
 import { HomeDownContent, HomeStyled } from "../styles/home.styles";
 import { icons } from "../styles/globalStyles";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Footer from "../components/Footer/Footer";
 
 export default function Home() {
   const [bgPic, setBgPic] = useState(1);
+  const [count, setCount] = useState(1);
+  const [cart, setCart] = useState("Добавить в корзину");
+  const [saved, setSaved] = useState(false);
+  const [navOpen, setNavOpen] = useState(false);
+
+  const [show, setShow] = useState(false);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  const [scrollPosition, setScrollPosition] = useState(true);
+
+  const handleScroll = () => {
+    const position = window.pageYOffset;
+    setScrollPosition(position);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    console.log(scrollPosition);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const addToCart = () => {
+    if (cart === "Добавить в корзину") {
+      setCart("Добавлень в корзину");
+    }
+  };
+
+  let inCart = cart === "Добавить в корзину" ? false : true;
+
+  const decrement = () => {
+    if (count > 1) {
+      setCount(count - 1);
+    }
+  };
+
+  const increment = () => {
+    setCount(count + 1);
+  };
 
   return (
-    <Layout>
-      <HomeStyled className="center">
+    <Layout onScroll={handleScroll}>
+      <Navbar
+        inCart={inCart}
+        saved={saved}
+        show={show}
+        navOpen={navOpen}
+        setNavOpen={setNavOpen}
+      />
+      <HomeStyled className="center" onClick={() => setNavOpen(false)}>
         <div className="home_up">
           <div className="home_up_img">
             {/* make parent div position relative */}
@@ -62,8 +110,8 @@ export default function Home() {
             <div className="home_up_section">
               <header className="home_up_section_header">
                 <div className="home_up_section_header_article">
-                  <h3>800 Р</h3>
-                  <p>1 500 P</p>
+                  <h3>800 ₽</h3>
+                  <p>1 500 ₽</p>
                   <span>{icons.right}</span>
                 </div>
 
@@ -87,12 +135,20 @@ export default function Home() {
 
                 <div className="home_up_section_content_buttons">
                   <div className="counter">
-                    <button>+</button>
-                    <p>1</p>
-                    <button>-</button>
+                    <button onClick={increment}>+</button>
+                    <p>{count}</p>
+                    <button onClick={decrement}>-</button>
                   </div>
-                  <button className="addToCart">Добавить в корзину</button>
-                  <button className="save">{icons.heart}</button>
+                  <button
+                    className="addToCart"
+                    onClick={addToCart}
+                    disabled={inCart}
+                  >
+                    {cart}
+                  </button>
+                  <button className="save" onClick={() => setSaved(!saved)}>
+                    {saved ? icons.heartFill : icons.heart}
+                  </button>
                 </div>
                 <div>
                   <a href="#">Купить в 1 клик</a>
@@ -123,8 +179,8 @@ export default function Home() {
           href="#"
           style={{
             display: "block",
-            width: "fit-content",
-            margin: "30px auto"
+            width: "200px",
+            margin: "30px auto",
           }}
         >
           Посмотрети все стили

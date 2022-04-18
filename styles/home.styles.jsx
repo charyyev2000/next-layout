@@ -56,7 +56,7 @@ export const HomeStyled = styled.article`
         max-width: 100%;
         min-height: 100%;
         position: relative;
-        // object-fit: cover;
+        object-fit: cover;
         // z-index: 100;
       }
 
@@ -163,7 +163,7 @@ export const HomeStyled = styled.article`
             font-size: 24px;
             line-height: 24px;
             margin: 0px 10px;
-            margin-top: 15px;
+            // margin-top: 15px;
           }
 
           p {
@@ -214,7 +214,8 @@ export const HomeStyled = styled.article`
           // background: red;
 
           .addToCart {
-            padding: 12px 28px;
+            // padding: 12px 28px;
+            min-width: 170px;
             background: ${colors.secondary};
             color: ${colors.primary};
             border: none;
@@ -226,6 +227,15 @@ export const HomeStyled = styled.article`
             -moz-transition: box-shadow 0.3s ease;
             -ms-transition: box-shadow 0.3s ease;
             -o-transition: box-shadow 0.3s ease;
+
+            &:disabled {
+              opacity: 0.5;
+              cursor: not-allowed;
+
+              &:hover {
+                box-shadow: none;
+              }
+            }
 
             &:hover {
               box-shadow: 0px 10px 10px ${colors.secondary};

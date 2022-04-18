@@ -9,12 +9,16 @@ import { LayoutStyled, MainContainer } from "./Layout.styles";
 // import Navbar from "../Navbar/Navbar";
 // import { LayoutStyled, MainContainer } from "./Layout.styles";
 
-function Layout({ title, children }) {
+function Layout({ title, children, ...props }) {
   const router = useRouter();
+  const handelScrolls = () => {
+    console.log("scroll");
+  };
+
   return (
     <>
       <GlobalStyle />
-      <LayoutStyled>
+      <LayoutStyled {...props}>
         <Head>
           <title>
             {" "}
@@ -29,7 +33,7 @@ function Layout({ title, children }) {
             content="Alef Development, HTML верстальщик, "
           />
         </Head>
-        <Navbar />
+        {/* <Navbar /> */}
         <MainContainer className="center">{children}</MainContainer>
         <Footer />
       </LayoutStyled>
